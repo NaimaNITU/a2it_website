@@ -2,3 +2,6 @@
 @plugin "daisyui";
 
 
+*{
+    font-family: "Roboto", sans-serif;
+}

@@ -231,15 +231,15 @@ export default function EmployeeSection() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 overflow-hidden">
+    <section className="py-20 bg-[#0a0a12] overflow-hidden">
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            OUR EXPERT TEAM
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight text-[#00f0ff] mb-4">
+            MEET OUR EXPERT TEAM
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <div className="w-24 h-1 bg-gradient-to-r from-[#00f0ff] to-[#0066ff] mx-auto mb-6"></div>
+          <p className="text-xl text-[#b0b0ff] max-w-2xl mx-auto leading-relaxed">
             Meet our talented team of developers, designers, and tech experts
             who bring innovation, expertise, and dedication to every project
           </p>
@@ -250,7 +250,7 @@ export default function EmployeeSection() {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-gray-200 text-gray-800 shadow-xl rounded-full w-14 h-14 backdrop-blur-sm border-0 flex items-center justify-center transition-all duration-200"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-200 text-[#0a0a12] shadow-xl rounded-full w-14 h-14 border-0 flex items-center justify-center transition-all duration-200"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
@@ -259,7 +259,7 @@ export default function EmployeeSection() {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-gray-200 text-gray-800 shadow-xl rounded-full w-14 h-14 backdrop-blur-sm border-0 flex items-center justify-center transition-all duration-200"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-200 text-[#0a0a12] shadow-xl rounded-full w-14 h-14 border-0 flex items-center justify-center transition-all duration-200"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
@@ -271,92 +271,79 @@ export default function EmployeeSection() {
             {getVisibleMembers().map((member, index) => (
               <div
                 key={`${member.id}-${currentIndex}`}
-                className={`group relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm transform hover:scale-100 rounded-lg ${
+                className={`group relative overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 bg-[#12121a] transform hover:scale-100 rounded-lg border border-[#00f0ff]/20 ${
                   index === 1 ? "md:scale-110 z-10" : "md:scale-95"
                 }`}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
               >
                 <div className="p-0">
-                  {/* Member Image */}
                   <div className="relative overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-80 object-cover transition-all duration-500 group-hover:scale-110"
                     />
-
-                    {/* Member Number */}
-                    <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-2xl font-bold text-white">
+                    <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-r from-[#00f0ff] to-[#0066ff] rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-2xl font-bold text-[#0a0a12]">
                         {member.number}
                       </span>
                     </div>
-
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12]/90 via-[#0a0a12]/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-[#e0e0ff] transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                         <div className="flex items-center gap-2 mb-3">
-                          <Code className="w-5 h-5 text-blue-400" />
+                          <Code className="w-5 h-5 text-[#00f0ff]" />
                           <span className="text-sm font-medium">
                             {member.position}
                           </span>
                         </div>
-
                         <h3 className="text-2xl font-bold mb-2">
                           {member.name}
                         </h3>
-
-                        <p className="text-sm text-gray-200 mb-4 leading-relaxed">
+                        <p className="text-sm text-[#b0b0ff] mb-4 leading-relaxed">
                           {member.description}
                         </p>
-
-                        {/* Member Stats */}
                         <div className="grid grid-cols-3 gap-4 mb-4">
                           <div className="text-center">
-                            <div className="text-lg font-bold text-blue-400">
+                            <div className="text-lg font-bold text-[#00f0ff]">
                               {member.stats.projects}
                             </div>
-                            <div className="text-xs text-gray-300">
+                            <div className="text-xs text-[#b0b0ff]">
                               Projects
                             </div>
                           </div>
                           <div className="text-center">
-                            <div className="text-lg font-bold text-blue-400">
+                            <div className="text-lg font-bold text-[#00f0ff]">
                               {member.stats.experience}
                             </div>
-                            <div className="text-xs text-gray-300">
+                            <div className="text-xs text-[#b0b0ff]">
                               Experience
                             </div>
                           </div>
                           <div className="text-center">
-                            <div className="text-lg font-bold text-blue-400">
+                            <div className="text-lg font-bold text-[#00f0ff]">
                               {member.stats.rating}
                             </div>
-                            <div className="text-xs text-gray-300">Rating</div>
+                            <div className="text-xs text-[#b0b0ff]">Rating</div>
                           </div>
                         </div>
-
-                        {/* Skills */}
                         <div className="flex flex-wrap gap-1 mb-3">
                           {member.skills.slice(0, 3).map((skill, idx) => (
                             <span
                               key={idx}
-                              className="text-xs bg-blue-600/80 text-white px-2 py-1 rounded-full backdrop-blur-sm"
+                              className="text-xs bg-[#0066ff] text-white px-2 py-1 rounded-full"
                             >
                               {skill}
                             </span>
                           ))}
                         </div>
-
-                        {/* Achievements */}
                         <div className="flex flex-wrap gap-1">
                           {member.achievements
                             .slice(0, 2)
                             .map((achievement, idx) => (
                               <span
                                 key={idx}
-                                className="text-xs bg-purple-600/80 text-white px-2 py-1 rounded-full backdrop-blur-sm"
+                                className="text-xs bg-[#12121a] text-[#e0e0ff] px-2 py-1 rounded-full border border-[#00f0ff]/20"
                               >
                                 {achievement}
                               </span>
@@ -365,26 +352,22 @@ export default function EmployeeSection() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Basic Info (Always Visible) */}
                   <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">
+                    <h3 className="text-xl font-bold text-[#e0e0ff] mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-gray-600 font-medium">
+                    <p className="text-[#b0b0ff] font-medium">
                       {member.position}
                     </p>
-
-                    {/* Tech Icons */}
                     <div className="flex justify-center gap-2 mt-3">
-                      <div className="p-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full">
-                        <Code className="w-4 h-4 text-white" />
+                      <div className="p-2 bg-[#00f0ff] rounded-full">
+                        <Code className="w-4 h-4 text-[#0a0a12]" />
                       </div>
-                      <div className="p-2 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full">
+                      <div className="p-2 bg-[#0066ff] rounded-full">
                         <Database className="w-4 h-4 text-white" />
                       </div>
-                      <div className="p-2 bg-gradient-to-r from-green-500 to-green-600 rounded-full">
-                        <Smartphone className="w-4 h-4 text-white" />
+                      <div className="p-2 bg-[#12121a] rounded-full border border-[#00f0ff]/20">
+                        <Smartphone className="w-4 h-4 text-[#00f0ff]" />
                       </div>
                     </div>
                   </div>
@@ -401,8 +384,8 @@ export default function EmployeeSection() {
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 scale-125"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    ? "bg-[#00f0ff] scale-125"
+                    : "bg-[#b0b0ff] hover:bg-[#00f0ff]"
                 }`}
               />
             ))}

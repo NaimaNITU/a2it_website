@@ -139,7 +139,7 @@ export default function A2ITGallery() {
   };
 
   const ProjectCard = ({ project, index }) => (
-    <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white h-full">
+    <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-[#1c1c1c] h-full">
       <div className="relative overflow-hidden">
         <img
           src={project.src}

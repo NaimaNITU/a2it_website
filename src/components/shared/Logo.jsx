@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/A2_IT_Final_Logo-2-removebg-preview.png";
+import logo from "/A2ITLogo.png";
 const Logo = () => {
   return (
     <>

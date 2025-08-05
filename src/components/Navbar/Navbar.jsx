@@ -70,34 +70,48 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const services = [
+    [
+      "Website Design & Development",
+      "/services/web-development",
+      <FaLaptopCode />,
+    ],
+    [
+      "Mobile App Designing & Development",
+      "/services/mobile-app",
+      <FaMobileAlt />,
+    ],
+    ["eCommerce Development Solutions", "/services/ecommerce", <FaGlobe />],
+    ["ERP System Development", "/services/erp", <FaVectorSquare />],
+    ["SEO / SEM / PPC", "/services/seo", <FaSearch />],
+    ["Social Media Marketing", "/services/social-media", <FaSearch />],
+    ["Server and Hosting Services", "/services/server-hosting", <FaUsers />],
+  ];
+
   return (
     <nav
-      className={`bg-[#1a1a1a] text-white px-6 md:px-10 py-4 flex items-center justify-between relative z-50 sticky top-0 transition-all duration-300 ${
+      className={`bg-[#0a0a12] text-[#e0e0ff] px-6 md:px-10 py-4 flex items-center justify-between relative z-50 sticky top-0 transition-all duration-300 ${
         isScrolled
-          ? "bg-opacity-90 shadow-[0_4px_20px_0px_rgba(243,110,39,0.5)]"
+          ? "bg-opacity-90 shadow-[0_4px_20px_0px_rgba(0,240,255,0.3)]"
           : "bg-opacity-100 shadow-none"
       }`}
     >
-      {/* Logo */}
-      <div className="flex items-center space-x-2">
+      <Link to="/" className="flex items-center space-x-2">
         <Logo />
-        <span className="text-2xl text-[#f36e27] font-bold">A2IT Ltd</span>
-      </div>
+      </Link>
 
-      {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-10 items-center text-sm font-medium relative">
         <li>
-          <Link to="/" className="hover:text-[#f36e27]">
+          <Link to="/" className="hover:text-[#00f0ff]">
             Home
           </Link>
         </li>
         <li>
-          <Link to="/about" className="hover:text-[#f36e27]">
+          <Link to="/about" className="hover:text-[#00f0ff]">
             About
           </Link>
         </li>
 
-        {/* Dropdown for desktop */}
         <li
           className="relative"
           onMouseEnter={handleMouseEnter}
@@ -105,9 +119,9 @@ const Navbar = () => {
         >
           <button
             onClick={handleToggleClick}
-            className="flex items-center gap-1 hover:text-[#f36e27]"
+            className="flex items-center gap-1 hover:text-[#00f0ff]"
           >
-            Our Services
+            Our Services{" "}
             <IoIosArrowDown
               className={`transition-transform duration-300 ${
                 dropdownOpen ? "rotate-180" : "rotate-0"
@@ -117,36 +131,26 @@ const Navbar = () => {
 
           {dropdownOpen && (
             <div
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[900px] h-[320px] bg-[#121212] text-gray-100 grid grid-cols-3 rounded-xl shadow-2xl z-20 px-8 py-6"
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[900px] h-[320px] bg-[#12121a] text-[#b0b0ff] grid grid-cols-3 rounded-xl shadow-2xl z-20 px-8 py-6"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Services */}
               <div className="col-span-2 grid grid-cols-2 gap-6">
-                {[
-                  ["Website Design & Development", <FaLaptopCode />],
-                  ["Mobile App Designing & Development", <FaMobileAlt />],
-                  ["eCommerce Development Solutions", <FaGlobe />],
-                  ["ERP System Development", <FaVectorSquare />],
-                  ["SEO / SEM / PPC", <FaSearch />],
-                  ["Social Media Marketing", <FaSearch />],
-                  ["Server and Hosting Services", <FaUsers />],
-                ].map(([title, icon], idx) => (
-                  <div
+                {services.map(([title, path, icon], idx) => (
+                  <Link
+                    to={path}
                     key={idx}
-                    className="flex items-start gap-3 hover:text-[#f36e27] cursor-pointer"
-                    onClick={() => alert(`You clicked on ${title}`)}
+                    className="flex items-start gap-3 hover:text-[#00f0ff] cursor-pointer"
                   >
-                    <div className="bg-[#f36e27] text-black p-2 rounded-full text-sm mt-1">
+                    <div className="bg-[#00f0ff] text-[#0a0a12] p-2 rounded-full text-sm mt-1">
                       {icon}
                     </div>
                     <div className="text-sm leading-tight">{title}</div>
-                  </div>
+                  </Link>
                 ))}
               </div>
 
-              {/* Right: Blurred card */}
-              <div className="bg-[#1a1a1a] border border-[#373737] rounded-lg p-4 relative overflow-hidden">
+              <div className="bg-[#0e0e15] border border-[#00f0ff]/20 rounded-lg p-4 relative overflow-hidden">
                 <img
                   src={serviceImage}
                   alt="Services"
@@ -156,10 +160,10 @@ const Navbar = () => {
                   <h3 className="text-base font-semibold mb-2">
                     Download our PDF portfolio
                   </h3>
-                  <p className="text-sm text-gray-300 mb-4">
+                  <p className="text-sm text-[#b0b0ff] mb-4">
                     See our project experience & offerings in detail.
                   </p>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-[#f36e27] hover:bg-[#a94d1c] rounded-full text-sm font-semibold text-white transition w-full justify-center">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00f0ff] to-[#0066ff] hover:from-[#00c0ff] hover:to-[#0044ff] rounded-full text-sm font-semibold text-[#0a0a12] transition w-full justify-center">
                     <FaDownload /> Download
                   </button>
                 </div>
@@ -169,91 +173,79 @@ const Navbar = () => {
         </li>
 
         <li>
-          <Link to="/portfolio" className="hover:text-[#f36e27]">
+          <Link to="/portfolio" className="hover:text-[#00f0ff]">
             Portfolio
           </Link>
         </li>
         <li>
-          <Link href="/" className="hover:text-[#f36e27]">
+          <Link to="/blog" className="hover:text-[#00f0ff]">
             Blog
           </Link>
         </li>
       </ul>
 
-      {/* Contact Button */}
-      <button className="bg-black hover:bg-[#f36e27] transition-all text-white px-3 py-2.5 rounded-full shadow-md text-sm font-semibold hidden md:flex items-center gap-1">
-        <span className="animate-wave origin-[70%_70%]">👋</span>
-        Contact Us
-      </button>
+      <Link
+        to="/contact-us"
+        className="bg-[#0066ff] hover:bg-[#00f0ff] transition-all text-white px-3 py-2.5 rounded-full shadow-md text-sm font-semibold hidden md:flex items-center gap-1"
+      >
+        <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
+      </Link>
 
-      {/* Hamburger */}
       <div className="md:hidden">
         <button onClick={toggleMobileMenu}>
           {mobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#1a1a1a] text-white px-6 py-4 space-y-4 z-40">
-          <a href="#" className="block hover:text-[#f36e27]">
+        <div className="absolute top-full left-0 w-full bg-[#0a0a12] text-[#e0e0ff] px-6 py-4 space-y-4 z-40">
+          <Link to="/" className="block hover:text-[#00f0ff]">
             Home
-          </a>
-          <a href="#" className="block hover:text-[#f36e27]">
+          </Link>
+          <Link to="/about" className="block hover:text-[#00f0ff]">
             About
-          </a>
-
+          </Link>
           <div>
             <button
               onClick={toggleMobileServices}
-              className="flex items-center justify-between w-full hover:text-[#f36e27]"
+              className="flex items-center justify-between w-full hover:text-[#00f0ff]"
             >
-              Our Services
+              Our Services{" "}
               <IoIosArrowDown
                 className={`transition-transform duration-300 ${
                   servicesOpen ? "rotate-180" : "rotate-0"
                 }`}
               />
             </button>
-
             {servicesOpen && (
               <div className="mt-2 pl-4 space-y-2">
-                {[
-                  "Website Design & Development",
-                  "Mobile App Designing & Development",
-                  "eCommerce Development Solutions",
-                  "ERP System Development",
-                  "SEO / SEM / PPC",
-                  "Social Media Marketing",
-                  "Server and Hosting Services",
-                ].map((title, idx) => (
-                  <p
+                {services.map(([title, path], idx) => (
+                  <Link
+                    to={path}
                     key={idx}
-                    className="hover:text-[#f36e27] cursor-pointer text-sm"
-                    onClick={() => alert(`You clicked on ${title}`)}
+                    className="block text-sm hover:text-[#00f0ff]"
                   >
                     {title}
-                  </p>
+                  </Link>
                 ))}
               </div>
             )}
           </div>
-
-          <a href="#" className="block hover:text-[#f36e27]">
+          <Link to="/portfolio" className="block hover:text-[#00f0ff]">
             Portfolio
-          </a>
-          <a href="#" className="block hover:text-[#f36e27]">
+          </Link>
+          <Link to="/blog" className="block hover:text-[#00f0ff]">
             Blog
-          </a>
-
-          <button className="w-full mt-4 bg-black hover:bg-[#f36e27] text-white py-3 px-2 rounded-full text-sm font-semibold flex items-center justify-center gap-1">
-            <span className="animate-wave origin-[70%_70%]">👋</span>
-            Contact Us
-          </button>
+          </Link>
+          <Link
+            to="/contact-us"
+            className="w-full mt-4 bg-gradient-to-r from-[#0066ff] to-[#00f0ff] hover:from-[#0044ff] hover:to-[#00c0ff] text-[#0a0a12] py-3 px-2 rounded-full text-sm font-semibold flex items-center justify-center gap-1"
+          >
+            <span className="animate-wave origin-[70%_70%]">👋</span> Contact Us
+          </Link>
         </div>
       )}
 
-      {/* Animation style */}
       <style>{`
         @keyframes wave {
           0% { transform: rotate(0deg); }
